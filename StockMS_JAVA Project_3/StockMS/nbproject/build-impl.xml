@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*** GENERATED FROM project.xml - DO NOT EDIT  ***
+***         EDIT ../build.xml INSTEAD         ***
+-->
+<project name="StockMS-impl" basedir=".." xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2me-jabber/1">
+
+    <property file="nbproject/private/private.properties"/>
+    <property file="${user.home}/.netbeans/build.properties"/>
+    <property file="nbproject/project.properties"/>
+
+    <property name="build.dir" value="build"/>
+    <property name="src.dir" value="src"/>
+    <property name="test.src.dir" value="test"/>
+    <property name="build.classes.dir" value="${build.dir}/classes"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="dist.jar" value="${dist.dir}/StockMS.jar"/>
+
+    <target name="default" depends="jar" description="Build and package the project."/>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="test"/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile source files.">
+        <javac srcdir="${src.dir}" destdir="${build.classes.dir}"
+               classpath="${javac.classpath}"
+               source="${javac.source}" target="${javac.target}"
+               includeantruntime="false" encoding="UTF-8">
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile" description="Package into a JAR.">
+        <jar destfile="${dist.jar}" basedir="${build.classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="run" depends="compile" description="Run the project.">
+        <java classname="${main.class}" fork="true">
+            <classpath>
+                <pathelement location="${build.classes.dir}"/>
+                <pathelement path="${javac.classpath}"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="clean" description="Clean build outputs.">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="javadoc" depends="init" description="Generate Javadoc.">
+        <javadoc destdir="${dist.dir}/javadoc" source="${javac.source}"
+                 classpath="${javac.classpath}">
+            <sourcepath>
+                <pathelement location="${src.dir}"/>
+            </sourcepath>
+        </javadoc>
+    </target>
+
+</project>
